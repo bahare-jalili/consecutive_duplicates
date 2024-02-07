@@ -1,3 +1,10 @@
+interface InputObject {
+  [key: string]: any[];
+}
+
+interface OutputObject {
+  [key: string]: any[];
+}
 /**
  * Removes consecutive duplicates from arrays in the input object using Array.filter().
  *
@@ -5,9 +12,9 @@
  * @returns An object with the same keys but with consecutive duplicates removed from the arrays.
  */
 export function removeConsecutiveDuplicates(
-  input: Record<string, any[]>
-): Record<string, any[]> {
-  let output_object: Record<string, any[]> = {};
+  input: InputObject
+): OutputObject {
+  let output_object: OutputObject = {};
   for (const key in input) {
     const values = input[key];
     const uniqueValues = values.filter(
@@ -26,9 +33,9 @@ export function removeConsecutiveDuplicates(
  * @returns An object with the same keys but with consecutive duplicates removed from the arrays.
  */
 export function removeConsecutiveDuplicatesReduce(
-  input: Record<string, any[]>
-): Record<string, any[]> {
-  const output_object: Record<string, any[]> = {};
+  input: InputObject
+): OutputObject {
+  const output_object: OutputObject = {};
 
   for (const key in input) {
     const values = input[key];
@@ -49,9 +56,9 @@ export function removeConsecutiveDuplicatesReduce(
  * @returns An object with the same keys but with consecutive duplicates removed from the arrays.
  */
 export function removeConsecutiveDuplicatesLoop(
-  input: Record<string, any[]>
-): Record<string, any[]> {
-  const output_object: Record<string, any[]> = {};
+  input: InputObject
+): OutputObject {
+  const output_object: OutputObject = {};
 
   for (const key in input) {
     const values = input[key];
@@ -66,7 +73,7 @@ export function removeConsecutiveDuplicatesLoop(
   return output_object;
 }
 
-let example_input: Record<string, any[]> = {
+let example_input: InputObject = {
   datapoint_1: [1.0, 2.3, 1.2, 3.4, 2.0, 2.0, 3.1, 2.3],
   datapoint_2: [true, true, true, false, true, false],
   datapoint_3: [
