@@ -1,3 +1,9 @@
+/**
+ * Removes consecutive duplicates from arrays in the input object using Array.filter().
+ *
+ * @param input An object where keys are strings and values are arrays of any type.
+ * @returns An object with the same keys but with consecutive duplicates removed from the arrays.
+ */
 export function removeConsecutiveDuplicates(
   input: Record<string, any[]>
 ): Record<string, any[]> {
@@ -13,6 +19,12 @@ export function removeConsecutiveDuplicates(
   return output_object;
 }
 
+/**
+ * Removes consecutive duplicates from arrays in the input object using Array.reduce().
+ *
+ * @param input An object where keys are strings and values are arrays of any type.
+ * @returns An object with the same keys but with consecutive duplicates removed from the arrays.
+ */
 export function removeConsecutiveDuplicatesReduce(
   input: Record<string, any[]>
 ): Record<string, any[]> {
@@ -30,6 +42,12 @@ export function removeConsecutiveDuplicatesReduce(
   return output_object;
 }
 
+/**
+ * Removes consecutive duplicates from arrays in the input object using simple for loop.
+ *
+ * @param input An object where keys are strings and values are arrays of any type.
+ * @returns An object with the same keys but with consecutive duplicates removed from the arrays.
+ */
 export function removeConsecutiveDuplicatesLoop(
   input: Record<string, any[]>
 ): Record<string, any[]> {
