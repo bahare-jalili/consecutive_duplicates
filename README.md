@@ -2,42 +2,47 @@
 
 ## Context and Problem Statement
 
-I wanted to write a function that takes a Record<string, any[]> as an input and returns a new Record with the same keys but in which any consecutive duplicates have been pruned from their values. In addition, to write a jest testsuite for the function. I wrote the algorithm in 3 ways to find which one is better considering performance and timing.
+I have written a function that accepts a `Record<string, any[]>` as input and returns a new `Record` with the same keys, but with consecutive duplicates removed from their respective values. I implemented the algorithm in three different ways to determine the most efficient approach in terms of performance and timing. Additionally, I have included several Jest tests to evaluate the functionality and performance of each approach.
 
 ## Decision Drivers
 
 - **Performance Requirements**: If the application has strict performance requirements, the performance of each technique would be a significant driver. Considerations include the size of the input data and the frequency of the operation.
-- **Code Readability and Maintainability**: The readability and maintainability of the code are essential factors, especially in collaborative projects or projects with long-term maintenance requirements. Some developers may find certain techniques more intuitive or easier to understand.
-- **Compatibility and Target Environment**: Compatibility with target environments and language features is crucial. Certain techniques may rely on features that are not available in all environments or require specific compiler options.
+- **Code Readability and Maintainability**: The readability and maintainability of the code are essential factors, especially in collaborative projects or projects with long-term maintenance requirements.
 
 ## Considered Options
 
-- **filter method**: The Array.filter() method is arguably the most important and widely used method for iterating over an array in JavaScript. The filter method creates a new array and returns all of the items which pass the condition specified in the callback.
+- **Array.filter() method**: The `Array.filter()` method is arguably the most important and widely used method for iterating over an array in JavaScript. The filter method creates a new array and returns all of the items which pass the condition specified in the callback.
 
-- **reduce method**: The reduce() method got its name from the functionality it provides, which is to iterate and “reduce” an array's values into one value.
+- **Array.reduce() method**: The `Array.reduce()` method got its name from the functionality it provides, which is to iterate and “reduce” an array's values into one value.
 
-- **simple for loop method**: A for loop is a statement that repeats the execution of a block of code when the condition has not been met and terminates the execution when the condition has been met.
+- **simple for loop method**: A `for` loop is a statement that repeats the execution of a block of code when the condition has not been met and terminates the execution when the condition has been met.
 
 ## Decision Outcome
 
-The choice among these techniques depends on the specific requirements and constraints of the project. If performance is critical and the application follows a functional programming paradigm, using the filter method may be the best choice. However, if fine-grained control or optimization is necessary, reduce might be preferred. For developers who prioritize familiarity and explicit control, a simple loop may be the most suitable option. Ultimately, it's essential to consider the trade-offs and make a decision based on the specific context of the project.
+To determine the most efficient algorithm in terms of performance, I conducted a series of tests for each of the three solutions. I performed 10 iterations for each solution, with 20 attempts per iteration. The table below presents the average performance results for each algorithm.
 
-## How to run the code and tests
+![Results of comparing various algorithms](./diagrams/results-of-comparing-various-algorithms.png)
+
+In the last row of the table, I have displayed the average of all attempts, which shows that the algorithm implemented using the `Array.filter()` method has the best overall performance and stability. Additionally, the `Array.filter()` method and the `for` loop are more understandable for JavaScript programmers at any level, while the `Array.reduce()` method is less intuitive and [may not be as readable for some developers](https://betterprogramming.pub/think-again-before-you-use-array-reduce-28f785b5aea9). Considering these reasons, the conclusion is that the `Array.filter()` method is the best option in terms of both performance and readability.
+
+## More information
+
+### How to run the code and tests
 
 Make sure that you have tsc (TypeScript compiler) and Node.js installed. Follow these steps to run the code and tests:
 
-### Running the code
+#### Running the code
 
 1. Compile the TypeScript file:
    ```bash
-   tsc ./code.ts
+   tsc code.ts
    ```
 2. Run the compiled JavaScript file:
    ```bash
-   node ./code.js
+   node code.js
    ```
 
-### Running the tests
+#### Running the tests
 
 1. Install the required npm packages:
    ```bash
